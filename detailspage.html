@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Details Page</title>
+	  <link rel="stylesheet" href="details_page.css">
+</head>
+<body>	<form>
+		<fieldset>
+			<legend>When</legend>
+			<table>
+				<tr> 
+					<td> <label>Event </label> <br> <select name="event">
+						<option selected disabled value="">Please Select</option>
+						<option value="Normal_event">Normal Event</option>
+						<option value="daily_event">Daily Event</option>
+						<option value="continous_event">Continous Event</option>
+					</select></td> 
+					<td><label> Event Marker </label> <br> <select name="event_marker">
+						<option selected disabled value="">Please Select</option>
+						<option value="" disabled="disabled" ><strong>Add New Event Marker</b></option>
+						<option value="session_1">Session 1</option>
+						<option value="session_2">Session 2</option>
+						<option value="session_3">Session 3</option>
+					</select> </td> 
+					<td> <label> Priority </label> <br> <select name="priority">
+						<option selected disabled value="">Please Select</option>
+						<option value="low">Low</option>
+						<option value="medium">Medium</option>
+						<option value="high">High</option>
+					</select> </td> 
+				</tr>
+			</table>
+		</fieldset>
+
+		<fieldset data-role="collapsible">
+			<legend>Where</legend>
+			<table>
+				<tr> 
+					<td> <label> Incident Type * </label> <br> <select name="incident_type" required>
+						<option selected disabled value="">Please Select</option>
+						<option value="accident">Accident[Medical]</option>
+						<option value="bomb_blast">Bomb Blast[Police]</option>
+						<option value="thieft">Thieft[Security]</option>
+					</select> </td> 
+					<td> <label> Fan Conduct Related </label> <br> <input type="radio" name="fan_conduct" checked>Yes <input type="radio" name="fan_conduct">No </td> 
+					<td rowspan="2"> Assigned to </td> 
+				</tr>
+			</table>
+		</fieldset>
+
+		<fieldset data-role="collapsible">
+			<legend>What</legend>
+				<table> 
+				<tr> 
+					<td width="25%"> <label> Location </label> <br> <select name="location" >
+						<option selected disabled value="">Select New Location</option>
+						<option value="" disabled>Add New Location</option>
+						<option value="" disabled>Show All...</option>
+						<option value="parking">Parking</option>
+						<option value="pavilion">Pavilion</option>
+						<option value="ground">Ground</option>
+					</select>  </td> 
+					<td width="25%"> <label> Section </label> <br> <select name="section" >
+						<option selected disabled value="">Select New Location</option>
+						<option value="" disabled>Add New Section</option>
+						<option value="" disabled>Show All...</option>
+						<option value="side_a">Side A</option>
+						<option value="side_b">Side B</option>
+						<option value="other">Other</option>
+					</select> </td> 
+					<td width="12.5%"> <label> Row </label> <br> <input type="text" name="row" > </td> 
+					<td width="12.5%"> <label> Seat </label> <br> <input type="text" name="seat" > </td> 
+					<td width="25%"> <label> Facility </label> <br> <input type="radio" name="facility_in_out" checked>Inside <input type="radio" name="facility_in_out" >Outside </td> 
+				</tr>
+				<tr>
+					<td width="25%"> <label> Conditions </label> <br> <input type="radio" name="conditions" checked>Dry <input type="radio" name="conditions">Wet <input type="radio" name="conditions">Icy <input type="radio" name="conditions" width="">Clean  </td>
+					<td colspan="3" width="50%"> <label> Obstacles Present </label> <br> <input type="text" name="obstacles_present"> </td>
+					<td width="25%"> <label>Normal Lighting </label> <br> <input type="radio" name="nomal_light" checked>Yes <input type="radio" name="nomal_light" >No </td>
+				</tr>
+				<tr>
+					<td width="25%"> <label> Reported Via </label> <br> <select name="reported_via" multiple="">
+						<option selected disabled value="">Select Reported Via</option>
+						<option value="" disabled>Add New Reported Via </option>
+						<option value="phone">Phone </option>
+						<option value="text">Text </option>
+						<option value="in_person">In Person</option>
+					</select> </td>
+					<td width="25%"> <label> Person Reporting</label> <br> <input type="text" name="person_reporting"> </td>
+					<td colspan="2" width="25%"> <label> Dept. Reporting </label> <br> <select name="dept_reporting">
+						<option selected value="medical">Medical </option>
+						<option value="police">Police </option>
+						<option value="security">Security</option>
+					</select>  </td>
+					<td width="25%"> <label> Handled/Dispatched By </label> <br> <select name="handled_by">
+						<option selected value="Pooja Iyer">Pooja Iyer</option>
+						<option value="Jasraj M">Jasraj M </option>
+						<option value="Namrata D">Namrata D</option>
+					</select> </td>
+				</tr>
+			</table>
+		</fieldset>
+
+		<fieldset data-role="collapsible">
+			<legend>Incident Status</legend>
+			<table>
+				<tr> 
+				<td> Created time <br/> <input type="date"></td>
+				<td> Dispatch time <br/> <input type="date"> </td>
+				<td> On scene time <br/> <input type="date"> </td>
+				<td> Closed time <br/> <input type="date"> </td>
+				<td>
+					<label>Select Resolution:</label>
+				</td>
+				</tr>
+			</table>
+		</fieldset>
+
+		<fieldset>
+			<legend>Associated Person</legend>
+			<table >
+				<tr>
+					<th>#</th>	
+					<th>First Name</th>	
+					<th>Last Name</th>	
+					<th>Date of Birth</th>	
+					<th>Ticket #</th>	
+					<th>Section</th>	
+					<th>Row</th>	
+					<th>Seat</th>	
+					<th>Resolution</th>	
+					<th>Signature</th>	
+					<th>Edit</th>	
+					<th>Delete</th>	
+				</tr>
+				
+				<script type="text/javascript">
+					var txt = '{"associate_persons":[' +
+							"{'fname':'Pooja', 'lname':'I', 'dob':'5/11/1993', 'ticket':'123', 'section':'other', 'row':'A', 'seat':'12', 'resolution':'arrest', 'sign':'<img src=/home/dell/Pictures/calendar>'}," +
+							"{'fname':'Jasraj', 'lname':'M', 'dob':'1/11/1992', 'ticket':'123', 'section':'other', 'row':'A', 'seat':'13', 'resolution':'arrest', 'sign':'<img src=/home/dell/Pictures/calendar>'}]}";
+
+					var ass_per = eval ("(" + txt + ")");
+					for (i=0; i<=txt.length; i++){
+						document.write(`<tr> <td align='center'>` i  `</td>`)
+						document.write(`<td align='center'> ass_per.associate_persons[i].fname </td>`)
+						document.write(`<td align='center'> ` ass_per.associate_persons[i].lname  ` </td>`)
+						document.write(`<td align='center'> ` ass_per.associate_persons[i].dob ` </td>`)
+						document.write(`<td align='center'> ` ass_per.associate_persons[i].ticket ` </td>`)
+						document.write(`<td align='center'> ` ass_per.associate_persons[i].section ` </td>`)
+						document.write(`<td align='center'> ` ass_per.associate_persons[i].row ` </td>`)
+						document.write(`<td align='center'> ` ass_per.associate_persons[i].seat ` </td>`)
+						document.write(`<td align='center'> ` ass_per.associate_persons[i].resolution ` </td>`)
+						document.write(`<td align='center'> ` ass_per.associate_persons[i].sign ` </td>`)
+						document.write(`<td align='center'> <img src=/home/dell/Pictures/close> </td>`)
+						document.write(`<td align='center'> <img src=/home/dell/Pictures/close> </td> </tr>`)
+					}
+				</script>
+			</table>
+		</fieldset>
+
+		<fieldset>
+			<legend>Medical Details</legend>
+			<table >
+				<tr>
+					<th>#</th>	
+					<th>Name or Ref ID of Injured</th>	
+					<th>Observed Injuries</th>	
+					<th>Actual Injured Body Part</th>	
+					<th>Alcohol/Drug Related</th>	
+					<th>Signature</th>	
+					<th>Edit</th>	
+					<th>Delete</th>	
+				</tr>
+
+				<script type="text/javascript">
+					var txt = '{"medical_details":[' +
+							"{'ref_id':'123', 'observed_injuries':'cuts', 'actual_injury':'cuts', 'alcohol_drug':'N/A', 'sign':'<img src=/home/dell/Pictures/calendar>'}]}";
+
+					var med_det = eval ("(" + txt + ")");
+
+					for (i=0; i<=txt.length; i++){
+						var ids = i+1;
+						document.write("<tr> <td align='center'> "+ ids +" </td>")
+						document.write("<td align='center'> "+ med_det.medical_details[i].ref_id +" </td>")
+						document.write("<td align='center'> "+ med_det.medical_details[i].observed_injuries  +" </td>")
+						document.write("<td align='center'> "+ med_det.medical_details[i].actual_injury +" </td>")
+						document.write("<td align='center'> "+ med_det.medical_details[i].alcohol_drug +" </td>")
+						document.write("<td align='center'> "+ med_det.medical_details[i].sign +" </td>")
+						document.write("<td align='center'> <img src=/home/dell/Pictures/close> </td>")
+						document.write("<td align='center'> <img src=/home/dell/Pictures/close> </td> </tr>")
+					}
+				</script>
+			</table>
+		</fieldset>
+
+		<fieldset>
+			<legend>Police Details</legend>
+			<table >
+				<tr>
+					<th>#</th>	
+					<th style="width:225px">Person Involved</th>	
+					<th>Alcohol Related</th>	
+					<th>Drug Related</th>	
+					<th style="width:225px">Physical Altercation</th>	
+					<th>Signature</th>	
+					<th>Edit</th>	
+					<th>Delete</th>	
+				</tr>
+
+				<script type="text/javascript">
+					var txt = '{"police_details":[' +
+							"{'person_involved':'Pooja', 'alcohol_related':'N/A', 'drug_related':'N/A', 'physical_altercation':'N/A', 'sign':'<img src=/home/dell/Pictures/calendar>'}]}";
+
+					var pol_det = eval ("(" + txt + ")");
+
+					for (i=0; i<=txt.length; i++){
+						var ids = i+1;
+						document.write("<tr> <td align='center'> "+ ids +" </td>")
+						document.write("<td align='center'> "+ pol_det.police_details[i].person_involved +" </td>")
+						document.write("<td align='center'> "+ pol_det.police_details[i].alcohol_related  +" </td>")
+						document.write("<td align='center'> "+ pol_det.police_details[i].drug_related  +" </td>")
+						document.write("<td align='center'> "+ pol_det.police_details[i].physical_altercation +" </td>")
+						document.write("<td align='center'> "+ pol_det.police_details[i].sign +" </td>")
+						document.write("<td align='center'> <img src=/home/dell/Pictures/close> </td>")
+						document.write("<td align='center'> <img src=/home/dell/Pictures/close> </td> </tr>")
+					}
+				</script>
+			</table>
+		</fieldset>
+
+
+		<fieldset>
+			<legend>Vehicle Details</legend>
+			<table >
+				<tr>
+					<th>#</th>					
+					<th style="width:250px">Person Driving</th>
+					<th>Owner's Name (is different from driver)</th>	
+					<th style="width:130px">Year</th>	
+					<th style="width:130px">Make</th>	
+					<th>Edit</th>	
+					<th>Delete</th>	
+				</tr>
+
+				<script type="text/javascript">
+					var txt = '{"vehicle_details":[' +
+							"{'person_driving':'Pooja', 'owner_name':'Bhaskar', 'year':'2013', 'make':'Hyndai'}]}";
+
+					var veh_det = eval ("(" + txt + ")");
+
+					for (i=0; i<=txt.length; i++){
+						var ids = i+1;
+						document.write("<tr> <td align='center'> "+ ids +" </td>")
+						document.write("<td align='center'> "+ veh_det.vehicle_details[i].person_driving +" </td>")
+						document.write("<td align='center'> "+ veh_det.vehicle_details[i].owner_name  +" </td>")
+						document.write("<td align='center'> "+ veh_det.vehicle_details[i].year  +" </td>")
+						document.write("<td align='center'> "+ veh_det.vehicle_details[i].make +" </td>")
+						document.write("<td align='center'> <img src=/home/dell/Pictures/close> </td>")
+						document.write("<td align='center'> <img src=/home/dell/Pictures/close> </td> </tr>")
+					}
+				</script>
+			</table>
+		</fieldset>
+
+		<fieldset>
+			<legend>Witness Details</legend>
+			<table >
+				<tr>
+					<th>#</th>						
+					<th style="width:200px">Witness Name</th>
+					<th>Date of Birth</th>	
+					<th style="width:175px">Phone Number</th>	
+					<th style="width:200px">Address</th>
+					<th>Signature</th>	
+					<th>Edit</th>	
+					<th>Delete</th>	
+				</tr>
+
+				<script type="text/javascript">
+					var txt = '{"witness_details":[' +
+							"{'witness_name':'Pooja', 'dob':'5/11/1993', 'phn_no':'9876543210', 'address':'India', 'sign':'<img src=/home/dell/Pictures/calendar>'}]}";
+
+					var wit_det = eval ("(" + txt + ")");
+
+					for (i=0; i<=txt.length; i++){
+						var ids = i+1;
+						dobument.write("<tr> <td align='center'> "+ ids +" </td>")
+						document.write("<td align='center'> "+ wit_det.witness_details[i].witness_name +" </td>")
+						document.write("<td align='center'> "+ wit_det.witness_details[i].doc  +" </td>")
+						document.write("<td align='center'> "+ wit_det.witness_details[i].phn_no  +" </td>")
+						document.write("<td align='center'> "+ wit_det.witness_details[i].address +" </td>")
+						document.write("<td align='center'> "+ wit_det.witness_details[i].sign +" </td>")
+						document.write("<td align='center'> <img src=/home/dell/Pictures/close> </td>")
+						document.write("<td align='center'> <img src=/home/dell/Pictures/close> </td> </tr>")
+					}
+				</script>
+			</table>
+		</fieldset>
+
+		<fieldset>
+			<legend>Comment</legend>
+			<table >
+				<tr>
+					<th>#</th>	
+					<th style="width:150px">Name</th>
+					<th style="width:150px">Comments</th>	
+					<th style="width:150px">Date/Time Added<th>	
+					<th>Copy Comments<th>	
+					<th>Signature</th>	
+					<th>Edit</th>	
+					<th>Delete</th>	
+				</tr>
+			</table>
+		</fieldset>
+
+		<fieldset>
+			<legend>Notes/Narrative</legend>
+			<textarea style="width: 100%; height: 150px"></textarea>
+		</fieldset>
+
+		<fieldset>
+			<legend>Additional Details</legend>
+				<table>
+				<tr> 
+					<td> <label>Agency Incident #</label> <br> <input type="text" name="agency_incident" > </td> 
+					<td> <label>Call Sign </label> <br> <input type="text" name="call_sign" > </td> 
+					<td> <label>Ticket #</label> <br> <input type="text" name="ticket" > </td> 
+				</tr>
+				<tr> 
+					<td> <label>Alcohol Related</label> <br> <input type="radio" name="alcohol_related">Yes <input type="radio" name="alcohol_related" checked>No <input type="radio" name="alcohol_related" >N/A </td> 
+					<td> <label>Person Updating Form </label> <br> <select name="person_updating">
+						<option selected value="Pooja Iyer">Pooja Iyer</option>
+						<option value="Jasraj M">Jasraj M </option>
+						<option value="Namrata D">Namrata D</option>
+					</select> </td>
+					<td> <label>Customer Complaint </label> <br> <input type="radio" name="customer_complaint">Yes <input type="radio" name="customer_complaint" checked>No </td>
+				</tr>
+			</table>
+		</fieldset>
+
+		<fieldset>
+		<legend>Attachment</legend>
+			<table>
+				<th width="40%">
+					<table>
+						<tr> <td> Name: <input type="text" name="name" width="50%"></td> </tr>
+						<tr width="100%"> <td> <label>Drage and Drop</label> </td> </tr>
+						<tr width="100%"> <td> <input type="file" name="Select"> </td> </tr>
+						<tr width="100%"> <td> <select name="event">
+							<option selected disabled value="">Please Select</option>
+							<option value="Normal_event">Image</option>
+							<option value="daily_event">Video</option>
+							<option value="continous_event">Document</option>
+						</select></td> </tr>
+					</table>
+				</th>
+				<th width="60%">
+					<table>
+						<th width="100%">
+							<td> Document Type</td>
+							<td> File Type</td>
+							<td> Name </td>
+							<td> Added Date </td>
+							<td> Download</td>
+							<td> Edit </td>
+							<td> Delete </td>
+						</th>
+					</table>
+				</th>
+			</table>
+		</fieldset>
+		
+	</form>
+</body>
+</html>
